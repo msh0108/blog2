@@ -2,9 +2,16 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
+
+let posts = '강남 고기 맛집';
+
   return (
     <div className="App">
-      test hi hi hello
+      <div className='black-nav'> {/* jsx */}
+        <div style={ { color : 'blue', fontSize : '30px' } }>개발 Blog</div>
+      </div>
+      <img src={ logo } />
+      <h4> { posts } </h4>
     </div>
   );
 }
