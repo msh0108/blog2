@@ -8,17 +8,21 @@ let [글제목, 글제목변경] = useState(['남자 코트 추천' ,'강남 우
 
 let [따봉, 따봉변경] = useState(0);
 
-function 제목바꾸기(){
-  var newArray = [...글제목]; 
-  newArray[0] = '여자 코트 추천'
-  글제목변경( newArray );
-}
+let [modal, modal변경] = useState(false);
 
-function 제목정렬(){
-  var newArray = [...글제목]; 
-  newArray = newArray.sort();
-  글제목변경( newArray );
-}
+
+
+// function 제목바꾸기(){
+//   var newArray = [...글제목]; 
+//   newArray[0] = '여자 코트 추천'
+//   글제목변경( newArray );
+// }
+
+// function 제목정렬(){
+//   var newArray = [...글제목]; 
+//   newArray = newArray.sort();
+//   글제목변경( newArray );
+// }
 
 let posts = '강남 고기 맛집';
 
@@ -27,7 +31,7 @@ let posts = '강남 고기 맛집';
       <div className='black-nav'> {/* jsx */}
         <div>개발 Blog</div>
       </div>
-      <button onClick={ 제목정렬 }>버튼</button>
+      {/* <button onClick={ 제목정렬 }>버튼</button> */}
       <div className='list'>
       <h3> { 글제목[0] } <span onClick={ () => { 따봉변경(따봉 + 1) } }>👍</span> {따봉} </h3>
       <p>2월 17일 발행</p>
@@ -43,8 +47,14 @@ let posts = '강남 고기 맛집';
       <p>2월 19일 발행</p>
       <hr/>
       </div>
+      <button onClick={ () => { modal변경(!modal) } }>버튼</button>
 
-      <Modal />
+      {
+        modal === true
+        ? <Modal />
+        : null
+      }
+      
       
 
     </div>
