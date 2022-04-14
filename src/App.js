@@ -43,8 +43,23 @@ let posts = '강남 고기 맛집';
       <p>2월 19일 발행</p>
       <hr/>
       </div>
+
+      <Modal />
+      
+
     </div>
   );
+
+}
+
+function Modal(){
+  return (
+    <div>
+        <h2>제목</h2>
+        <p>날짜</p>
+        <p>상세내용</p>
+      </div>
+  )
 }
 
 export default App;
