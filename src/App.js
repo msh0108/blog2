@@ -14,13 +14,13 @@ let [따봉2, 따봉변경2] = useState([0, 0, 0]);
 
 let [modal, modal변경] = useState(false);
 
+let [title, title변경] = useState(0);
 
-
-// function 제목바꾸기(){
-//   var newArray = [...글제목]; 
-//   newArray[0] = '여자 코트 추천'
-//   글제목변경( newArray );
-// }
+//  function 제목바꾸기(){
+//    var newArray = [...글제목]; 
+//    newArray[0] = '여자 코트 추천'
+//    글제목변경( newArray );
+//  }
 
 // function 제목정렬(){
 //   var newArray = [...글제목]; 
@@ -72,17 +72,18 @@ let posts = '강남 고기 맛집';
         글제목.map(function(글, i){
           return (
           <div className='list' key={i}>
-          <h3 onClick={ () => {modal변경(true)} }> { 글제목[i] } <span onClick={ () => {따봉변경(따봉+1)} }>👍</span> {따봉} </h3>
+          <h3 onClick={ () => {modal변경(true); title변경(i)} }> { 글제목[i] } <span onClick={ () => {따봉변경(따봉+1)} }>👍</span> {따봉} </h3>
           <p>2월 17일 발행</p>
           <hr/>
           </div>
           )
         })
       }
+      
 
       {
         modal === true
-        ? <Modal 글제목={글제목}/>
+        ? <Modal title={title} 글제목변경={글제목변경} 글제목={글제목}/>
         : null
       }
       
@@ -96,7 +97,7 @@ let posts = '강남 고기 맛집';
 function Modal(props){
   return (
     <div className='modal'>
-        <h2>{props.글제목[0]}</h2>
+        <h2>{props.글제목[props.title]}</h2>
         <p>날짜</p>
         <p>상세내용</p>
         <button>글수정</button>
