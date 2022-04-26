@@ -16,6 +16,8 @@ let [modal, modal변경] = useState(false);
 
 let [title, title변경] = useState(0);
 
+let [입력값, 입력값변경] = useState('');
+
 //  function 제목바꾸기(){
 //    var newArray = [...글제목]; 
 //    newArray[0] = '여자 코트 추천'
@@ -72,14 +74,17 @@ let posts = '강남 고기 맛집';
         글제목.map(function(글, i){
           return (
           <div className='list' key={i}>
-          <h3 onClick={ () => {modal변경(true); title변경(i)} }> { 글제목[i] } <span onClick={ () => {따봉변경(따봉+1)} }>👍</span> {따봉} </h3>
+          <h3 onClick={ () => {modal변경(true); title변경(i)} }> { 글제목[i] } <span onClick={ (e) => { e.stopPropagation(); 따봉변경(따봉+1)} }>👍</span> {따봉} </h3>
           <p>2월 17일 발행</p>
           <hr/>
           </div>
           )
         })
       }
-      
+
+      <input onChange={(e)=>{ 
+        입력값변경(e.target.value); 
+        console.log(입력값) }} />
 
       {
         modal === true
