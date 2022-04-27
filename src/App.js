@@ -76,6 +76,11 @@ let posts = '강남 고기 맛집';
           <div className='list' key={i}>
           <h3 onClick={ () => {modal변경(true); title변경(i)} }> { 글제목[i] } <span onClick={ (e) => { e.stopPropagation(); 따봉변경(따봉+1)} }>👍</span> {따봉} </h3>
           <p>2월 17일 발행</p>
+          <button onClick={()=>{
+            let copy = [...글제목];
+            copy.splice(i, 1); 
+            글제목변경(copy);
+          }}>삭제</button>
           <hr/>
           </div>
           )
@@ -83,8 +88,13 @@ let posts = '강남 고기 맛집';
       }
 
       <input onChange={(e)=>{ 
-        입력값변경(e.target.value); 
-        console.log(입력값) }} />
+        입력값변경(e.target.value) }} />
+
+        <button onClick={()=>{
+          let copy = [...글제목];
+          copy.unshift(입력값);
+          글제목변경(copy)
+          }}>글발행</button>
 
       {
         modal === true
