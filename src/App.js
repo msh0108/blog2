@@ -96,6 +96,8 @@ let posts = '강남 고기 맛집';
           글제목변경(copy)
           }}>글발행</button>
 
+          <Profile />
+
       {
         modal === true
         ? <Modal title={title} 글제목변경={글제목변경} 글제목={글제목}/>
@@ -118,6 +120,27 @@ function Modal(props){
         <button>글수정</button>
       </div>
   )
+}
+
+class Profile extends React.Component {
+  constructor(){
+    super();
+    this.state = { name : 'Kim', age : 30 }
+  }
+
+  changeName =  () => {
+    this.setState( {name: 'Park'} )
+  }
+
+  render(){
+    return (
+      <div>
+        <h3>프로필입니다</h3>
+        <p>저는 { this.state.name } 입니다.</p>
+        <button onClick={ this.changeName }>버튼</button>
+      </div>
+    )
+  }
 }
 
 export default App;
